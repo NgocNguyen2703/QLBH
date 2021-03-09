@@ -1,0 +1,35 @@
+﻿@model BTLLTQL.Models.DonGiaChi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DonGiaChi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDDonHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDDonHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTienHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTienHang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDPhieuChi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

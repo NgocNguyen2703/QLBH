@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BTLLTQL.Models.DonGiaThu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDDichVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDDichVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDPhieuThu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDPhieuThu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDPhieuThu })
+        </td>
+    </tr>
+}
+
+</table>
