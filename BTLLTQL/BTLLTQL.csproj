@@ -220,6 +220,7 @@
     <Compile Include="Models\DonGiaChi.cs" />
     <Compile Include="Models\DonGiaThu.cs" />
     <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\Encrytion.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LoaiDichVu.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -678,6 +679,7 @@
     <Content Include="Views\QuanLies\Edit.cshtml" />
     <Content Include="Views\QuanLies\Index.cshtml" />
     <Content Include="Views\CheckAccount\Login.cshtml" />
+    <Content Include="Views\CheckAccount\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
