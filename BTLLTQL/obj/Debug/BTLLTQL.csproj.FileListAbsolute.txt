@@ -88,7 +88,6 @@ C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Crea
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_Ban.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_Ca.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_CuaHang.resources
-C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csprojAssemblyReference.cache
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_PhieuThu.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_DonHang.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Alter_Column_DonHang_Ngay.resources
@@ -96,3 +95,6 @@ C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Crea
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_DonGiaThu.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_DonGiaChi.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_QuanLy.resources
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_CheckAccount.resources
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Tb.resources
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csprojAssemblyReference.cache

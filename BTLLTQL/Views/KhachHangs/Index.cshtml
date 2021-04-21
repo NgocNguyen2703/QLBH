@@ -2,9 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
+    Layout = "~/Views/Shared/_Layout.cshtml";}
 <h2>Index</h2>
 
 <p>
@@ -27,7 +25,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TenKH)
+            @Html.Raw(item.TenKH)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DiaChi)

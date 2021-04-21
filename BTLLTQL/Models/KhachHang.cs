@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BTLLTQL.Models
 {
@@ -12,6 +13,7 @@ namespace BTLLTQL.Models
     {
         [Key]
         public  String IDKhachHang { get; set; }
+        [AllowHtml]
         public  String TenKH { get; set; }
         public  String DiaChi { get; set; }
         public  int SoBan { get; set; }
