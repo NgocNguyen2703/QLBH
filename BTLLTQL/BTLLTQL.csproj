@@ -210,6 +210,14 @@
     <Compile Include="Migrations\202104200151463_Tb.Designer.cs">
       <DependentUpon>202104200151463_Tb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104220112570_Alter_column_Ban_SoBan.cs" />
+    <Compile Include="Migrations\202104220112570_Alter_column_Ban_SoBan.Designer.cs">
+      <DependentUpon>202104220112570_Alter_column_Ban_SoBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104220844564_Alter_column_Ca_Gio.cs" />
+    <Compile Include="Migrations\202104220844564_Alter_column_Ca_Gio.Designer.cs">
+      <DependentUpon>202104220844564_Alter_column_Ca_Gio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
     <Compile Include="Models\BTLDbConText.cs" />
@@ -745,6 +753,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104200151463_Tb.resx">
       <DependentUpon>202104200151463_Tb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104220112570_Alter_column_Ban_SoBan.resx">
+      <DependentUpon>202104220112570_Alter_column_Ban_SoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104220844564_Alter_column_Ca_Gio.resx">
+      <DependentUpon>202104220844564_Alter_column_Ca_Gio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

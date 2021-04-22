@@ -46,7 +46,7 @@ namespace BTLLTQL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDCa,Ngay")] Ca ca)
+        public ActionResult Create([Bind(Include = "IDCa,Ngay,Gio")] Ca ca)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace BTLLTQL.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDCa,Ngay")] Ca ca)
+        public ActionResult Edit([Bind(Include = "IDCa,Ngay,Gio")] Ca ca)
         {
             if (ModelState.IsValid)
             {

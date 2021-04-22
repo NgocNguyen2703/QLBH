@@ -76,12 +76,7 @@ C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\bin\System.Web.WebPages.Razor.xml
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\bin\Newtonsoft.Json.xml
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\bin\Antlr3.Runtime.pdb
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csproj.CoreCompileInputs.cache
-C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csproj.CopyComplete
-C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.dll
-C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.pdb
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_KhachHang.resources
-C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csproj.GenerateResource.cache
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_NhanVien.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_DichVu.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_LoaiDichVu.resources
@@ -97,4 +92,11 @@ C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Crea
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_QuanLy.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Create_Table_CheckAccount.resources
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Tb.resources
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Alter_column_Ban_SoBan.resources
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.Migrations.Alter_column_Ca_Gio.resources
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csproj.GenerateResource.cache
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csproj.CoreCompileInputs.cache
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csproj.CopyComplete
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.dll
+C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.pdb
 C:\Users\LAPTOPSN\source\repos\BTLLTQL\BTLLTQL\obj\Debug\BTLLTQL.csprojAssemblyReference.cache

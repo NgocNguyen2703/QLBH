@@ -12,5 +12,6 @@ namespace BTLLTQL.Models
     {
         [Key]
         public String IDBan { get; set; }
+        public String SoBan { get; set; }
     }
 }
