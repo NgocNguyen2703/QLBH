@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BTLLTQL.Models;
+using BTLLTQL.Models.ExcelProcess;
 
 namespace BTLLTQL.Controllers
 {
     public class KhachHangsController : Controller
     {
         private BTLDbConText db = new BTLDbConText();
+        ReadExcel excel = new ReadExcel();
 
         // GET: KhachHangs
         public ActionResult Index()
@@ -113,6 +118,67 @@ namespace BTLLTQL.Controllers
             db.KhachHangs.Remove(khachHang);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        //upload file excel controller
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            // đặt tên cho file
+            string _FileName = "KhachHang.xlsx";
+
+            //đường dẫn lưu file
+            string _path = Path.Combine(Server.MapPath("~/Uploads/Excels"), _FileName);
+
+            //lưu file lên server
+            file.SaveAs(_path);
+
+            //doc DL tu file excel
+            DataTable dt = excel.ReadDataFromExcelFile(_path);
+            //CopyDataByBulk(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                KhachHang khachHang = new KhachHang();
+                khachHang.IDKhachHang = dt.Rows[i][0].ToString();
+                khachHang.TenKH = dt.Rows[i][1].ToString();
+                khachHang.DiaChi = dt.Rows[i][2].ToString();
+                khachHang.SoBan =  dt.Rows[i][3].ToString();
+                db.KhachHangs.Add(khachHang);
+                db.SaveChanges();
+            }
+
+            try
+            {
+                //upload file thành công và file có dữ liệu
+                if (file.ContentLength > 0)
+                {
+                    //Your code doc file excel ban upload len va tra ve data table
+                    CopyDataByBulk(excel.ReadDataFromExcelFile(_path));
+                }
+            }
+            catch (Exception ex)
+            {
+                //nếu upload file thất bại
+                ViewBag.ThongBao = "Ghi du lieu that bai";
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        private void CopyDataByBulk(DataTable dt) //day toan bo du lieu cua data Table len server
+        {
+            //lấy kết nối với database lưu trong file web.config
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString);
+            SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+            bulkcopy.DestinationTableName = "KhachHangs";
+            bulkcopy.ColumnMappings.Add(0, "IDKhachHang");
+            bulkcopy.ColumnMappings.Add(1, "TenKH");
+            bulkcopy.ColumnMappings.Add(2, "DiaChi");
+            bulkcopy.ColumnMappings.Add(3, "SoBan");
+            con.Open();
+            bulkcopy.WriteToServer(dt);
+            con.Close();
         }
 
         protected override void Dispose(bool disposing)

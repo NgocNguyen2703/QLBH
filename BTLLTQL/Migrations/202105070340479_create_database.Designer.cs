@@ -7,13 +7,13 @@ namespace BTLLTQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Create_Table_DonGiaThu : IMigrationMetadata
+    public sealed partial class create_database : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Create_Table_DonGiaThu));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(create_database));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103090719396_Create_Table_DonGiaThu"; }
+            get { return "202105070340479_create_database"; }
         }
         
         string IMigrationMetadata.Source

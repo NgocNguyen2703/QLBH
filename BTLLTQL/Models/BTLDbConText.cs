@@ -26,7 +26,6 @@ namespace BTLLTQL.Models
         public virtual DbSet<QuanLy> QuanLys { get; set; }
         public virtual DbSet<CheckAccount> CheckAccounts { get; set; }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }

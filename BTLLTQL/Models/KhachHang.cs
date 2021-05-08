@@ -16,6 +16,6 @@ namespace BTLLTQL.Models
         [AllowHtml]
         public  String TenKH { get; set; }
         public  String DiaChi { get; set; }
-        public  int SoBan { get; set; }
+        public  String SoBan { get; set; }
     }
 }

@@ -146,77 +146,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103090520081_Create_Table_KhachHang.cs" />
-    <Compile Include="Migrations\202103090520081_Create_Table_KhachHang.Designer.cs">
-      <DependentUpon>202103090520081_Create_Table_KhachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090540408_Create_Table_NhanVien.cs" />
-    <Compile Include="Migrations\202103090540408_Create_Table_NhanVien.Designer.cs">
-      <DependentUpon>202103090540408_Create_Table_NhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090548375_Create_Table_DichVu.cs" />
-    <Compile Include="Migrations\202103090548375_Create_Table_DichVu.Designer.cs">
-      <DependentUpon>202103090548375_Create_Table_DichVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090605007_Create_Table_LoaiDichVu.cs" />
-    <Compile Include="Migrations\202103090605007_Create_Table_LoaiDichVu.Designer.cs">
-      <DependentUpon>202103090605007_Create_Table_LoaiDichVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090608534_Create_Table_Ban.cs" />
-    <Compile Include="Migrations\202103090608534_Create_Table_Ban.Designer.cs">
-      <DependentUpon>202103090608534_Create_Table_Ban.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090616291_Create_Table_Ca.cs" />
-    <Compile Include="Migrations\202103090616291_Create_Table_Ca.Designer.cs">
-      <DependentUpon>202103090616291_Create_Table_Ca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090620052_Create_Table_CuaHang.cs" />
-    <Compile Include="Migrations\202103090620052_Create_Table_CuaHang.Designer.cs">
-      <DependentUpon>202103090620052_Create_Table_CuaHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090640332_Create_Table_PhieuThu.cs" />
-    <Compile Include="Migrations\202103090640332_Create_Table_PhieuThu.Designer.cs">
-      <DependentUpon>202103090640332_Create_Table_PhieuThu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090647231_Create_Table_DonHang.cs" />
-    <Compile Include="Migrations\202103090647231_Create_Table_DonHang.Designer.cs">
-      <DependentUpon>202103090647231_Create_Table_DonHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090704344_Alter_Column_DonHang_Ngay.cs" />
-    <Compile Include="Migrations\202103090704344_Alter_Column_DonHang_Ngay.Designer.cs">
-      <DependentUpon>202103090704344_Alter_Column_DonHang_Ngay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090714451_Create_Table_PhieuChi.cs" />
-    <Compile Include="Migrations\202103090714451_Create_Table_PhieuChi.Designer.cs">
-      <DependentUpon>202103090714451_Create_Table_PhieuChi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090719396_Create_Table_DonGiaThu.cs" />
-    <Compile Include="Migrations\202103090719396_Create_Table_DonGiaThu.Designer.cs">
-      <DependentUpon>202103090719396_Create_Table_DonGiaThu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090724507_Create_Table_DonGiaChi.cs" />
-    <Compile Include="Migrations\202103090724507_Create_Table_DonGiaChi.Designer.cs">
-      <DependentUpon>202103090724507_Create_Table_DonGiaChi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103090729562_Create_Table_QuanLy.cs" />
-    <Compile Include="Migrations\202103090729562_Create_Table_QuanLy.Designer.cs">
-      <DependentUpon>202103090729562_Create_Table_QuanLy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104191642365_Create_Table_CheckAccount.cs" />
-    <Compile Include="Migrations\202104191642365_Create_Table_CheckAccount.Designer.cs">
-      <DependentUpon>202104191642365_Create_Table_CheckAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104200151463_Tb.cs" />
-    <Compile Include="Migrations\202104200151463_Tb.Designer.cs">
-      <DependentUpon>202104200151463_Tb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104220112570_Alter_column_Ban_SoBan.cs" />
-    <Compile Include="Migrations\202104220112570_Alter_column_Ban_SoBan.Designer.cs">
-      <DependentUpon>202104220112570_Alter_column_Ban_SoBan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104220844564_Alter_column_Ca_Gio.cs" />
-    <Compile Include="Migrations\202104220844564_Alter_column_Ca_Gio.Designer.cs">
-      <DependentUpon>202104220844564_Alter_column_Ca_Gio.cs</DependentUpon>
+    <Compile Include="Migrations\202105070340479_create_database.cs" />
+    <Compile Include="Migrations\202105070340479_create_database.Designer.cs">
+      <DependentUpon>202105070340479_create_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
@@ -229,6 +161,7 @@
     <Compile Include="Models\DonGiaThu.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\Encrytion.cs" />
+    <Compile Include="Models\ExcelProcess\ReadExcel.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LoaiDichVu.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -691,6 +624,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\Excels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -706,59 +640,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103090520081_Create_Table_KhachHang.resx">
-      <DependentUpon>202103090520081_Create_Table_KhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090540408_Create_Table_NhanVien.resx">
-      <DependentUpon>202103090540408_Create_Table_NhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090548375_Create_Table_DichVu.resx">
-      <DependentUpon>202103090548375_Create_Table_DichVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090605007_Create_Table_LoaiDichVu.resx">
-      <DependentUpon>202103090605007_Create_Table_LoaiDichVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090608534_Create_Table_Ban.resx">
-      <DependentUpon>202103090608534_Create_Table_Ban.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090616291_Create_Table_Ca.resx">
-      <DependentUpon>202103090616291_Create_Table_Ca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090620052_Create_Table_CuaHang.resx">
-      <DependentUpon>202103090620052_Create_Table_CuaHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090640332_Create_Table_PhieuThu.resx">
-      <DependentUpon>202103090640332_Create_Table_PhieuThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090647231_Create_Table_DonHang.resx">
-      <DependentUpon>202103090647231_Create_Table_DonHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090704344_Alter_Column_DonHang_Ngay.resx">
-      <DependentUpon>202103090704344_Alter_Column_DonHang_Ngay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090714451_Create_Table_PhieuChi.resx">
-      <DependentUpon>202103090714451_Create_Table_PhieuChi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090719396_Create_Table_DonGiaThu.resx">
-      <DependentUpon>202103090719396_Create_Table_DonGiaThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090724507_Create_Table_DonGiaChi.resx">
-      <DependentUpon>202103090724507_Create_Table_DonGiaChi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103090729562_Create_Table_QuanLy.resx">
-      <DependentUpon>202103090729562_Create_Table_QuanLy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104191642365_Create_Table_CheckAccount.resx">
-      <DependentUpon>202104191642365_Create_Table_CheckAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104200151463_Tb.resx">
-      <DependentUpon>202104200151463_Tb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104220112570_Alter_column_Ban_SoBan.resx">
-      <DependentUpon>202104220112570_Alter_column_Ban_SoBan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104220844564_Alter_column_Ca_Gio.resx">
-      <DependentUpon>202104220844564_Alter_column_Ca_Gio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105070340479_create_database.resx">
+      <DependentUpon>202105070340479_create_database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
