@@ -10,6 +10,7 @@ using BTLLTQL.Models;
 
 namespace BTLLTQL.Controllers
 {
+    [Authorize]
     public class CuaHangsController : Controller
     {
         private BTLDbConText db = new BTLDbConText();
