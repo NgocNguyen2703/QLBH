@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using BTLLTQL.Models;
 
 namespace BTLLTQL.Controllers
@@ -13,14 +14,14 @@ namespace BTLLTQL.Controllers
     public class CasController : Controller
     {
         private BTLDbConText db = new BTLDbConText();
-
-        // GET: Cas
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Cas.ToList());
         }
 
         // GET: Cas/Details/5
+        [Authorize]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -36,6 +37,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: Cas/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +47,7 @@ namespace BTLLTQL.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDCa,Ngay,Gio")] Ca ca)
         {
@@ -114,7 +117,6 @@ namespace BTLLTQL.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

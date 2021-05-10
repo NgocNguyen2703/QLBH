@@ -20,12 +20,14 @@ namespace BTLLTQL.Controllers
         ReadExcel excel = new ReadExcel();
 
         // GET: KhachHangs
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.KhachHangs.ToList());
         }
 
         // GET: KhachHangs/Details/5
+        [Authorize]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -41,6 +43,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: KhachHangs/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -50,6 +53,7 @@ namespace BTLLTQL.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDKhachHang,TenKH,DiaChi,SoBan")] KhachHang khachHang)
         {
@@ -64,6 +68,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: KhachHangs/Edit/5
+        [Authorize]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace BTLLTQL.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDKhachHang,TenKH,DiaChi,SoBan")] KhachHang khachHang)
         {
@@ -95,6 +101,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: KhachHangs/Delete/5
+        [Authorize]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -111,6 +118,7 @@ namespace BTLLTQL.Controllers
 
         // POST: KhachHangs/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
@@ -121,6 +129,7 @@ namespace BTLLTQL.Controllers
         }
         //upload file excel controller
         [HttpPost]
+        [Authorize]
         public ActionResult Upload(HttpPostedFileBase file)
         {
             // đặt tên cho file
