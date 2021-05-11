@@ -15,12 +15,14 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: PhieuThus
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.PhieuThus.ToList());
         }
 
         // GET: PhieuThus/Details/5
+        [Authorize]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: PhieuThus/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +48,7 @@ namespace BTLLTQL.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDPhieuThu,IDKhachHang,Ngay,IDNhanVien,TongTien")] PhieuThu phieuThu)
         {
@@ -59,6 +63,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: PhieuThus/Edit/5
+        [Authorize]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -77,6 +82,7 @@ namespace BTLLTQL.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDPhieuThu,IDKhachHang,Ngay,IDNhanVien,TongTien")] PhieuThu phieuThu)
         {
@@ -90,6 +96,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: PhieuThus/Delete/5
+        [Authorize]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -106,6 +113,7 @@ namespace BTLLTQL.Controllers
 
         // POST: PhieuThus/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
