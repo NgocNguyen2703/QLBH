@@ -14,5 +14,6 @@ namespace BTLLTQL.Models
         public String IDCa { get; set; }
         public String Ngay { get; set; }
         public String Gio { get; set; }
+
     }
 }
