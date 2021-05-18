@@ -21,7 +21,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: Cas/Details/5
-        [Authorize]
+       // [Authorize]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -37,7 +37,7 @@ namespace BTLLTQL.Controllers
         }
 
         // GET: Cas/Create
-        [Authorize]
+       // [Authorize]
         public ActionResult Create()
         {
             return View();
