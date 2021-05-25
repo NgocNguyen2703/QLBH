@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,10 +17,17 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: QuanLies
-        [Authorize]
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string searchString)
         {
-            return View(db.QuanLys.ToList());
+            var quanLies = from l in db.QuanLys // lấy toàn bộ liên kết
+                            select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                quanLies = quanLies.Where(s => s.IDNhanVien.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(quanLies);
         }
 
         // GET: QuanLies/Details/5
@@ -43,7 +52,26 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
-
+        public bool CheckQuanLy(string quanly)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from QuanLys where IDNhanVien = @NhanVien", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@NhanVien";
+                    param.Value = quanly;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
         // POST: QuanLies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -53,11 +81,16 @@ namespace BTLLTQL.Controllers
         public ActionResult Create([Bind(Include = "IDNhanVien,IDBan,IDCa")] QuanLy quanLy)
         {
             if (ModelState.IsValid)
-            {
+                if (CheckQuanLy(quanLy.IDNhanVien))
+                {
+                    ModelState.AddModelError("", "IDNhanVien da ton tai");
+                }
+                else
+                {
                 db.QuanLys.Add(quanLy);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+                }
 
             return View(quanLy);
         }

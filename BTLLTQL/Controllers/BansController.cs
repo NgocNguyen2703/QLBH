@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -16,9 +18,16 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: Bans
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Bans.ToList());
+            var bans = from l in db.Bans // lấy toàn bộ liên kết
+                      select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                bans = bans.Where(s => s.SoBan.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(bans);
         }
 
         // GET: Bans/Details/5
@@ -41,6 +50,26 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
+        public bool CheckBan(string ban)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from Bans where IDBan = @Ban", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@Ban";
+                    param.Value = ban;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
 
         // POST: Bans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -50,11 +79,16 @@ namespace BTLLTQL.Controllers
         public ActionResult Create([Bind(Include = "IDBan,SoBan")] Ban ban)
         {
             if (ModelState.IsValid)
-            {
+                if (CheckBan(ban.IDBan))
+                {
+                    ModelState.AddModelError("", "IDBan da ton tai");
+                }
+                else
+                {
                 db.Bans.Add(ban);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+                }
 
             return View(ban);
         }

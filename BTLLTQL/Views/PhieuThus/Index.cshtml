@@ -9,44 +9,56 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDKhachHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ngay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IDNhanVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </th>
-        <th></th>
-    </tr>
+    @using (Html.BeginForm())
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDKhachHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ngay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDNhanVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TongTien)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDPhieuThu }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDPhieuThu }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDPhieuThu })
-        </td>
-    </tr>
+    {
+
+    <p>
+
+        @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+    </p>
+
 }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDKhachHang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDNhanVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongTien)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDKhachHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDNhanVien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TongTien)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDPhieuThu }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IDPhieuThu }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDPhieuThu })
+                </td>
+            </tr>
+        }
+
+    </table>

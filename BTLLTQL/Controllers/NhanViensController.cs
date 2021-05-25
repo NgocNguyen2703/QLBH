@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -50,6 +52,26 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
+        public bool CheckNhanVien(string nhanVien)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from NhanViens where IDNhanVien = @NhanVien", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@NhanVien";
+                    param.Value = nhanVien;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
 
         // POST: NhanViens/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -60,7 +82,12 @@ namespace BTLLTQL.Controllers
         public ActionResult Create([Bind(Include = "IDNhanVien,TenNhanVien,SĐT")] NhanVien nhanVien)
         {
             if (ModelState.IsValid)
-            {
+                if (CheckNhanVien(nhanVien.IDNhanVien))
+                {
+                    ModelState.AddModelError("", "IDNhanVien da ton tai");
+                }
+                else
+                {
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
                 return RedirectToAction("Index");

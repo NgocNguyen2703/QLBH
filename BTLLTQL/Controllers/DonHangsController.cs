@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -16,9 +18,16 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: DonHangs
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.DonHangs.ToList());
+            var donHangs = from l in db.DonHangs // lấy toàn bộ liên kết
+                          select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                donHangs = donHangs.Where(s => s.IDDichVu.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(donHangs);
         }
 
         // GET: DonHangs/Details/5
@@ -41,7 +50,26 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
-
+        public bool CheckDonHang(string donHang)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from DonHangs where IĐonHang = @DonHang", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@DonHang";
+                    param.Value = donHang;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
         // POST: DonHangs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -51,11 +79,17 @@ namespace BTLLTQL.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DonHangs.Add(donHang);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (CheckDonHang(donHang.IĐonHang))
+                {
+                    ModelState.AddModelError("", "IĐonHang da ton tai");
+                }
+                else
+                {
+                    db.DonHangs.Add(donHang);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
             return View(donHang);
         }
 

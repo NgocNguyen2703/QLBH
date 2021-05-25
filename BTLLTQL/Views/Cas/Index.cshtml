@@ -8,39 +8,51 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+ @Html.ActionLink("Create New", "Create")
+ @using (Html.BeginForm())
+
+  {
+
+  <p>
+
+    @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+  </p>
+
+  }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDCa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ngay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gio)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDCa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gio)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDCa)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Ngay)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Gio)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.IDCa }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IDCa }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IDCa })
-    </td>
-</tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDCa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gio)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDCa }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IDCa }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDCa })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>

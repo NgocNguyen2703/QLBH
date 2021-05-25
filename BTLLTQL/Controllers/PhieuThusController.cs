@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,10 +17,17 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: PhieuThus
-        [Authorize]
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string searchString)
         {
-            return View(db.PhieuThus.ToList());
+            var phieuThus = from l in db.PhieuThus // lấy toàn bộ liên kết
+                       select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                phieuThus = phieuThus.Where(s => s.Ngay.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(phieuThus);
         }
 
         // GET: PhieuThus/Details/5
@@ -43,7 +52,26 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
-
+        public bool CheckPhieuThu(string phieuThu)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from PhieuThus where IDPhieuThu = @PhieuThu", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@PhieuThu";
+                    param.Value = phieuThu;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
         // POST: PhieuThus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -53,11 +81,16 @@ namespace BTLLTQL.Controllers
         public ActionResult Create([Bind(Include = "IDPhieuThu,IDKhachHang,Ngay,IDNhanVien,TongTien")] PhieuThu phieuThu)
         {
             if (ModelState.IsValid)
-            {
+                if (CheckPhieuThu(phieuThu.IDPhieuThu))
+                {
+                    ModelState.AddModelError("", "IDPhieuThu da ton tai");
+                }
+                else
+                {
                 db.PhieuThus.Add(phieuThu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+                }
 
             return View(phieuThu);
         }

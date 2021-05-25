@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -16,9 +18,16 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: DichVus
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.DichVus.ToList());
+            var dichVus = from l in db.DichVus // lấy toàn bộ liên kết
+                       select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                dichVus = dichVus.Where(s => s.TenDV.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(dichVus);
         }
 
         // GET: DichVus/Details/5
@@ -41,7 +50,26 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
-
+        public bool CheckDichVu(string dichVu)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from DichVus where IDDichVu = @DichVu", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@DichVu";
+                    param.Value = dichVu;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
         // POST: DichVus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -50,7 +78,12 @@ namespace BTLLTQL.Controllers
         public ActionResult Create([Bind(Include = "IDDichVu,TenDV,IDLoaiDV")] DichVu dichVu)
         {
             if (ModelState.IsValid)
-            {
+                if (CheckDichVu(dichVu.IDDichVu))
+                {
+                    ModelState.AddModelError("", "IDDichVu da ton tai");
+                }
+                else
+                {
                 db.DichVus.Add(dichVu);
                 db.SaveChanges();
                 return RedirectToAction("Index");

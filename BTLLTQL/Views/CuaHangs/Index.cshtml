@@ -9,6 +9,16 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm())
+    {
+
+    <p>
+
+        @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+
+    </p>
+
+    }
 </p>
 <table class="table">
     <tr>
@@ -26,22 +36,22 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDCuaHang)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TenCuaHang)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChiNhanh)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.IDCuaHang }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IDCuaHang }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IDCuaHang })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCuaHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCuaHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiNhanh)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDCuaHang }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDCuaHang }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDCuaHang })
+            </td>
+        </tr>
     }
 
 </table>

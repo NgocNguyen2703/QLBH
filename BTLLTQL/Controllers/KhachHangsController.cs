@@ -55,6 +55,27 @@ namespace BTLLTQL.Controllers
         {
             return View();
         }
+        public bool CheckKhachHang(string khachHang)
+        {
+            using (SqlConnection con = new SqlConnection())
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["BTLDbConText"].ConnectionString;
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from KhachHangs where IDKhachHang = @KhachHang", con))
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@KhachHang";
+                    param.Value = khachHang;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
+
 
         // POST: KhachHangs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -65,7 +86,12 @@ namespace BTLLTQL.Controllers
         public ActionResult Create([Bind(Include = "IDKhachHang,TenKH,DiaChi,SoBan")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
-            {
+                if (CheckKhachHang(khachHang.IDKhachHang))
+                {
+                    ModelState.AddModelError("", "IDKhachHang da ton tai");
+                }
+                else
+                {
                 db.KhachHangs.Add(khachHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
