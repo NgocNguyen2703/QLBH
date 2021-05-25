@@ -15,10 +15,17 @@ namespace BTLLTQL.Controllers
         private BTLDbConText db = new BTLDbConText();
 
         // GET: NhanViens
-        [Authorize]
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string searchString)
         {
-            return View(db.NhanViens.ToList());
+            var nhanViens = from l in db.NhanViens // lấy toàn bộ liên kết
+                        select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                nhanViens = nhanViens.Where(s => s.TenNhanVien.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(nhanViens);
         }
 
         // GET: NhanViens/Details/5

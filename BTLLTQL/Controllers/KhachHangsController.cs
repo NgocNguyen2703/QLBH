@@ -20,10 +20,17 @@ namespace BTLLTQL.Controllers
         ReadExcel excel = new ReadExcel();
 
         // GET: KhachHangs
-        [Authorize]
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string searchString)
         {
-            return View(db.KhachHangs.ToList());
+            var khachHangs = from l in db.KhachHangs // lấy toàn bộ liên kết
+                            select l;
+
+            if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                khachHangs = khachHangs.Where(s => s.TenKH.Contains(searchString)); //lọc theo chuỗi tìm kiếm
+            }
+            return View(khachHangs);
         }
 
         // GET: KhachHangs/Details/5
