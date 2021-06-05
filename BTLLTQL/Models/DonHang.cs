@@ -15,5 +15,7 @@ namespace BTLLTQL.Models
         public String IDDichVu { get; set; }
         public String IDNhanVien { get; set; }
         public String Ngay { get; set; }
+        public virtual NhanVien NhanVien { get; set; }
+        public virtual DichVu DichVu { get; set; }
     }
 }

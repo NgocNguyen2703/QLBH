@@ -21,7 +21,7 @@ namespace BTLLTQL.Controllers
         public ActionResult Index(string searchString)
         {
             var donHangs = from l in db.DonHangs // lấy toàn bộ liên kết
-                          select l;
+                           select l;
 
             if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
             {
